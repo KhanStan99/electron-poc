@@ -46,13 +46,11 @@ autoUpdater.on('update-available', () => {
   mainWindow.webContents.send('update_available');
 });
 
+
 autoUpdater.on('update-downloaded', () => {
-  // mainWindow.webContents.send('update_downloaded');
-  autoUpdater.quitAndInstall();
-  // app.quit();
-  app.relaunch();
+  mainWindow.webContents.send('update_downloaded');
 });
 
-// ipcMain.on('restart_app', () => {
-//   autoUpdater.quitAndInstall();
-// });
+ipcMain.on('restart_app', () => {
+  autoUpdater.quitAndInstall();
+});
