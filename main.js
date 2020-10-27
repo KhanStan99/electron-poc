@@ -16,7 +16,7 @@ function createWindow() {
     mainWindow = null;
   });
   // mainWindow.once('ready-to-show', () => {
-  setTimeout(() => {
+  setInterval(() => {
     autoUpdater.checkForUpdatesAndNotify();
   }, 10000)
   // });
@@ -47,9 +47,12 @@ autoUpdater.on('update-available', () => {
 });
 
 autoUpdater.on('update-downloaded', () => {
-  mainWindow.webContents.send('update_downloaded');
+  // mainWindow.webContents.send('update_downloaded');
+  autoUpdater.quitAndInstall();
+  // app.quit();
+  app.relaunch();
 });
 
-ipcMain.on('restart_app', () => {
-  autoUpdater.quitAndInstall();
-});
+// ipcMain.on('restart_app', () => {
+//   autoUpdater.quitAndInstall();
+// });
