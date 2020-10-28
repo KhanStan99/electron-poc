@@ -43,11 +43,11 @@ ipcMain.on('app_version', (event) => {
 });
 
 autoUpdater.on('update-available', () => {
-  mainWindow.webContents.send('update_downloaded');
+  mainWindow.webContents.send('update_available');
 });
 
-ipcMain.on('restart_app', () => {
-  // mainWindow.webContents.send('update_downloaded');
+
+autoUpdater.on('update-downloaded', () => {
   autoUpdater.quitAndInstall(true);
   // app.quit();
   app.relaunch();
