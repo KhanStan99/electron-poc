@@ -1,6 +1,6 @@
 {
   "name": "electron-auto-update-example",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "",
   "main": "main.js",
   "repository": {
@@ -12,15 +12,6 @@
     "start": "electron .",
     "build": "electron-builder build --win --publish never",
     "deploy": "electron-builder build --win --publish always"
-  },
-  "build": {
-    "win": {
-      "appId": "com.example.app",
-      "icon": "./icon.png",
-      "target": [
-        "msi"
-      ]
-    }
   },
   "author": "",
   "license": "ISC",
