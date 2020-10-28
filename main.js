@@ -15,11 +15,11 @@ function createWindow() {
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
-  // mainWindow.once('ready-to-show', () => {
+
   setInterval(() => {
     autoUpdater.checkForUpdatesAndNotify();
-  }, 10000)
-  // });
+  }, 10000);
+
 }
 
 app.on('ready', () => {
@@ -46,13 +46,10 @@ autoUpdater.on('update-available', () => {
   mainWindow.webContents.send('update_available');
 });
 
-
 autoUpdater.on('update-downloaded', () => {
-  autoUpdater.quitAndInstall(true);
-  // app.quit();
-  app.relaunch();
+  mainWindow.webContents.send('update_downloaded');
 });
 
-// ipcMain.on('restart_app', () => {
-//   autoUpdater.quitAndInstall();
-// });
+ipcMain.on('restart_app', () => {
+  autoUpdater.quitAndInstall();
+});
