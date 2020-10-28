@@ -48,7 +48,7 @@ autoUpdater.on('update-available', () => {
 
 ipcMain.on('restart_app', () => {
   // mainWindow.webContents.send('update_downloaded');
-  autoUpdater.quitAndInstall();
+  autoUpdater.quitAndInstall(true);
   // app.quit();
   app.relaunch();
 });
